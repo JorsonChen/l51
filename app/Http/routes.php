@@ -11,6 +11,62 @@
 |
 */
 
+/*-- ----------------------------
+  ----TEST 
+  -- ----------------------------*/
+
+Route::get('/testPost',function(){
+        $csrf_token = csrf_token();
+            $form = <<<FORM
+        <form action="/hello" method="POST">
+            <input type="hidden" name="_token" value="{$csrf_token}">
+            <input type="submit" value="Test"/>
+        </form>
+FORM;
+            return $form;
+});
+
+Route::get('/hello',function(){
+    return "Hello [POST]";
+});
+
+/*
+ *匹配多个请求方式(已经覆盖上一个/hello路由)
+ */
+Route::match(['get','post'],'/hello',function(){
+   return "match request"; 
+});
+
+/*
+ *多个参数，其中一个参数可有可无
+ */
+
+Route::get('/hello/{name}/by/{user?}',function($name,$user = "haha"){
+    return "Hello {$name},author by {$user}";   
+});
+
+
+/*
+ *正则约束参数
+ */
+
+Route::get('/hello/{name}',function($name){
+    return "Hello {$name}";   
+})->where('name','[A-Za-z]+');
+
+
+/*
+ *路由重命名和重定向
+ */
+
+Route::get('/hello/mylv/{versionName}',['as'=>'hml',function($versionName){
+    return "Hello mylv {$versionName}";   
+}]);
+Route::get('/testNameRoute',function(){
+    return redirect()->route('hml',['versionName'=>5.1]);
+});
+
+
 
 /*-- ----------------------------
   ---- 前台页面
