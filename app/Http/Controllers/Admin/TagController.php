@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Article;
+use App\Models\Article;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Tag;
+use App\Models\Tag;
 
 class TagController extends Controller
 {

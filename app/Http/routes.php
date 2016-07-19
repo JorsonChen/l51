@@ -66,7 +66,11 @@ Route::get('/testNameRoute',function(){
     return redirect()->route('hml',['versionName'=>5.1]);
 });
 
-
+/*
+ *Excel
+ */
+Route::get('excel/export','ExcelController@export');
+Route::get('excel/import','ExcelController@import');
 
 /*-- ----------------------------
   ---- 前台页面

@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Article;
-use App\Category;
-use App\Tag;
+use App\Models\Article;
+use App\Models\Category;
+use App\Models\Tag;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\User;
+use App\Models\User;
 
 class AdminController extends Controller
 {

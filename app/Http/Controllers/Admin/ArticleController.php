@@ -6,9 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Article;
-use App\Category;
-use App\Tag;
+use App\Models\Article;
+use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
